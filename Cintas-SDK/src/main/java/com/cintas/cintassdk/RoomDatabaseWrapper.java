@@ -19,12 +19,12 @@ public class RoomDatabaseWrapper {
     }
 
     public void insertLoggingIntoDb(EnterPriceLoggingData enterPriceLoggingData) {
-        EnterpriseLoggingDatabase db = new DatabaseManager().enterpriseLoggingDatabase();
+        EnterpriseLoggingDatabase db = DatabaseManager.instance().enterpriseLoggingDatabase();
         db.getEnterPriceLoggingTable().insertEnterPriceValue(enterPriceLoggingData);
     }
 
     public List<EnterPriceLoggingData> getLoggingDb() {
-        EnterpriseLoggingDatabase db = new DatabaseManager().enterpriseLoggingDatabase();
+        EnterpriseLoggingDatabase db = DatabaseManager.instance().enterpriseLoggingDatabase();
         return db.getEnterPriceLoggingTable().getLoggingAllValue();
     }
 }
