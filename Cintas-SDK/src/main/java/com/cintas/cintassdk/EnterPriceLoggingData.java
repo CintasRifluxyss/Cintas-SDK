@@ -1,8 +1,13 @@
 package com.cintas.cintassdk;
 
+import android.annotation.SuppressLint;
+import android.os.Build;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+
+import java.util.UUID;
 
 @Entity(tableName = "PRICE_DETAIL",primaryKeys = {"Id"})
 public class EnterPriceLoggingData {
@@ -12,19 +17,19 @@ public class EnterPriceLoggingData {
 
     @ColumnInfo(name = "EventTime")
     @NonNull
-    public String eventTime = new StringUtils().EMPTY;
+    public String eventTime;
 
     @ColumnInfo(name = "HostId")
     @NonNull
-    public String hostId  = new StringUtils().EMPTY;
+    public String hostId;
 
     @ColumnInfo(name = "AppID")
     @NonNull
-    public String appID  = new StringUtils().EMPTY;
+    public String appID;
 
     @ColumnInfo(name = "UserId")
     @NonNull
-    public String userId  = new StringUtils().EMPTY;
+    public String userId;
 
     @ColumnInfo(name = "LocationNbr")
     public long locationNbr;
@@ -37,22 +42,22 @@ public class EnterPriceLoggingData {
 
     @ColumnInfo(name = "Logger")
     @NonNull
-    public String logger  = new StringUtils().EMPTY;
+    public String logger;
 
     @ColumnInfo(name = "EventNbr")
     @NonNull
-    public String eventNbr = new StringUtils().EMPTY;
+    public String eventNbr;
 
     @ColumnInfo(name = "AddtDesc")
     @NonNull
-    public String addtDesc = new StringUtils().EMPTY;
+    public String addtDesc;
 
     @ColumnInfo(name = "AddtNbr")
     public int addtNbr;
 
-    public EnterPriceLoggingData(@NonNull String eventTime, @NonNull String hostId, @NonNull String appID, @NonNull String userId, long locationNbr, int routeNbr, int day, @NonNull String logger, @NonNull String eventNbr, @NonNull String addtDesc, int addtNbr) {
-        this.eventTime = eventTime;
-        this.hostId = hostId;
+    public EnterPriceLoggingData(@NonNull String appID, @NonNull String userId, long locationNbr, int routeNbr, int day, @NonNull String logger, @NonNull String eventNbr, @NonNull String addtDesc, int addtNbr) {
+        this.eventTime = new RoomDatabaseWrapper().getDeviceCurrentTime();
+        this.hostId = UUID.randomUUID().toString();
         this.appID = appID;
         this.userId = userId;
         this.locationNbr = locationNbr;
@@ -165,5 +170,6 @@ public class EnterPriceLoggingData {
     public void setAddtNbr(int addtNbr) {
         this.addtNbr = addtNbr;
     }
+
 
 }
