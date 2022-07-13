@@ -5,11 +5,26 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.room.Room;
 
-public abstract class RoomDatabaseClient extends EnterpriseLoggingDatabase{
+public class RoomDatabaseClient  {
 
-    private static EnterpriseLoggingDatabase mEnterpriseLoggingDatabase;
+    private RoomDatabaseClient mInstance;
 
-    public static EnterpriseLoggingDatabase build(Context mContext) {
+    private final Context mContext;
+
+    private EnterpriseLoggingDatabase mEnterpriseLoggingDatabase;
+
+    public RoomDatabaseClient(Context context) {
+        this.mContext = context;
+    }
+
+    public synchronized RoomDatabaseClient getInstance() {
+        if (mInstance == null) {
+            mInstance = new RoomDatabaseClient(mContext);
+        }
+        return mInstance;
+    }
+
+    public EnterpriseLoggingDatabase getAppDatabase() {
         if (mContext != null) {
             mEnterpriseLoggingDatabase = Room.databaseBuilder(mContext, EnterpriseLoggingDatabase.class, "cintasDatabase").fallbackToDestructiveMigration().allowMainThreadQueries().build();
         }

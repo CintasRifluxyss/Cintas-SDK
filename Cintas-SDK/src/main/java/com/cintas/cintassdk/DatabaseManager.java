@@ -6,7 +6,7 @@ public class DatabaseManager {
 
     private static DatabaseManager databaseManager;
 
-    private Lazy<EnterpriseLoggingDatabase> helperDatabaseLazy;
+    private Lazy<EnterpriseLoggingDatabase> loggingDatabaseLazy;
 
     public static DatabaseManager instance() {
         if (databaseManager == null) {
@@ -16,10 +16,10 @@ public class DatabaseManager {
     }
 
     public void initialize(Context context) {
-        helperDatabaseLazy = Lazy.create(() ->  RoomDatabaseClient.build(context));
+        loggingDatabaseLazy = Lazy.create(() -> new RoomDatabaseClient(context).getInstance().getAppDatabase());
     }
 
     public EnterpriseLoggingDatabase enterpriseLoggingDatabase() {
-        return instance().helperDatabaseLazy.get();
+        return instance().loggingDatabaseLazy.get();
     }
 }
