@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public interface EnterPriceLoggingTable {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert
     void insertEnterPriceValue(EnterPriceLoggingData enterPriceLoggingData);
 
     @Query("SELECT * FROM PRICE_DETAIL")
