@@ -8,8 +8,6 @@ import java.util.Locale;
 
 public class RoomDatabaseWrapper {
 
-    private EnterpriseLoggingDatabase db = new DatabaseManager().enterpriseLoggingDatabase();
-
     public EnterPriceLoggingData createLogs(@NonNull String appID, @NonNull String userId, long locationNbr, int routeNbr, int day, @NonNull String logger, @NonNull String eventNbr, @NonNull String addtDesc, int addtNbr ) {
         return new EnterPriceLoggingData(appID,userId,locationNbr,routeNbr,day,logger,eventNbr,addtDesc,addtNbr);
     }
@@ -20,6 +18,7 @@ public class RoomDatabaseWrapper {
     }
 
     public void insertLoggingIntoDb(EnterPriceLoggingData enterPriceLoggingData) {
+        EnterpriseLoggingDatabase db = new DatabaseManager().enterpriseLoggingDatabase();
         db.getEnterPriceLoggingTable().insertEnterPriceValue(enterPriceLoggingData);
     }
 

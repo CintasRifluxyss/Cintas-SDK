@@ -19,8 +19,7 @@ public class DatabaseManager {
         helperDatabaseLazy = Lazy.create(() -> new RoomDatabaseClient(context).getAppDatabase());
     }
 
-    public EnterpriseLoggingDatabase enterpriseLoggingDatabase()
-    {
+    public EnterpriseLoggingDatabase enterpriseLoggingDatabase() {
         return instance().helperDatabaseLazy.get();
     }
 }
