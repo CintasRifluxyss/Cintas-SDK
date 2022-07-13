@@ -14,7 +14,6 @@ import java.util.List;
 public interface EnterPriceLoggingTable {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    @WorkerThread
     void insertEnterPriceValue(EnterPriceLoggingData enterPriceLoggingData);
 
     @Query("SELECT * FROM PRICE_DETAIL")
