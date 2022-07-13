@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class RoomDatabaseWrapper {
@@ -22,4 +23,8 @@ public class RoomDatabaseWrapper {
         db.getEnterPriceLoggingTable().insertEnterPriceValue(enterPriceLoggingData);
     }
 
+    public List<EnterPriceLoggingData> getLoggingDb() {
+        EnterpriseLoggingDatabase db = new DatabaseManager().enterpriseLoggingDatabase();
+        return db.getEnterPriceLoggingTable().getLoggingAllValue();
+    }
 }
