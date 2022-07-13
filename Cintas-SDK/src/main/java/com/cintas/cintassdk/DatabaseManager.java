@@ -4,11 +4,11 @@ import android.content.Context;
 
 public class DatabaseManager {
 
-    private DatabaseManager databaseManager;
+    private static DatabaseManager databaseManager;
 
     private Lazy<EnterpriseLoggingDatabase> helperDatabaseLazy;
 
-    public DatabaseManager instance() {
+    public static DatabaseManager instance() {
         if (databaseManager == null) {
             databaseManager = new DatabaseManager();
         }
@@ -16,7 +16,7 @@ public class DatabaseManager {
     }
 
     public void initialize(Context context) {
-        helperDatabaseLazy = Lazy.create(() -> new RoomDatabaseClient(context).getAppDatabase());
+        helperDatabaseLazy = Lazy.create(() ->  RoomDatabaseClient.build(context));
     }
 
     public EnterpriseLoggingDatabase enterpriseLoggingDatabase() {

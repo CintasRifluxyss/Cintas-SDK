@@ -20,12 +20,12 @@ public class Lazy<T> implements Supplier
         this.supplier = supplier;
     }
 
-    public static <T> com.cintas.cintassdk.Lazy create(@NonNull Supplier<T> supplier)
+    public static <T> Lazy create(@NonNull Supplier<T> supplier)
     {
         return create(new StringUtils().EMPTY, supplier);
     }
 
-    public static <T> com.cintas.cintassdk.Lazy create(String tag, @NonNull Supplier<T> supplier)
+    public static <T> Lazy create(String tag, @NonNull Supplier<T> supplier)
     {
         com.cintas.cintassdk.Lazy<T> lazy = new com.cintas.cintassdk.Lazy<>(supplier);
         lazy.tag = tag;
