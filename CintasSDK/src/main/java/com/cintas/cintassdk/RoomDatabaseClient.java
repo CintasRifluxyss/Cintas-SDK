@@ -1,7 +1,8 @@
-package com.cintas.sdk;
+package com.cintas.cintassdk;
 
 import android.content.Context;
 
+import androidx.annotation.NonNull;
 import androidx.room.Room;
 
 public class RoomDatabaseClient {
@@ -29,4 +30,5 @@ public class RoomDatabaseClient {
         }
         return mEnterpriseLoggingDatabase;
     }
+
 }

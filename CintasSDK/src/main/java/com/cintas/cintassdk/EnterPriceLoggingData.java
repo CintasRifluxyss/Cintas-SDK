@@ -1,4 +1,4 @@
-package com.cintas.sdk;
+package com.cintas.cintassdk;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -49,6 +49,20 @@ public class EnterPriceLoggingData {
 
     @ColumnInfo(name = "AddtNbr")
     public int addtNbr;
+
+    public EnterPriceLoggingData(@NonNull String eventTime, @NonNull String hostId, @NonNull String appID, @NonNull String userId, long locationNbr, int routeNbr, int day, @NonNull String logger, @NonNull String eventNbr, @NonNull String addtDesc, int addtNbr) {
+        this.eventTime = eventTime;
+        this.hostId = hostId;
+        this.appID = appID;
+        this.userId = userId;
+        this.locationNbr = locationNbr;
+        this.routeNbr = routeNbr;
+        this.day = day;
+        this.logger = logger;
+        this.eventNbr = eventNbr;
+        this.addtDesc = addtDesc;
+        this.addtNbr = addtNbr;
+    }
 
     public int getId() {
         return Id;
@@ -151,4 +165,5 @@ public class EnterPriceLoggingData {
     public void setAddtNbr(int addtNbr) {
         this.addtNbr = addtNbr;
     }
+
 }

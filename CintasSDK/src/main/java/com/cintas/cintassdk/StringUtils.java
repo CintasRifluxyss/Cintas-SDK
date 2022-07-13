@@ -1,4 +1,4 @@
-package com.cintas.sdk;
+package com.cintas.cintassdk;
 
 public class StringUtils {
 
