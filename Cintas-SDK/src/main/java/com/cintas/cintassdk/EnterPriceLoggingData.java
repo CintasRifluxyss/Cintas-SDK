@@ -33,7 +33,7 @@ public class EnterPriceLoggingData {
     public String userId;
 
     @ColumnInfo(name = "LocationNbr")
-    public long locationNbr;
+    public String locationNbr;
 
     @ColumnInfo(name = "RouteNbr")
     public int routeNbr;
@@ -47,16 +47,16 @@ public class EnterPriceLoggingData {
 
     @ColumnInfo(name = "EventNbr")
     @NonNull
-    public String eventNbr;
+    public int eventNbr;
 
     @ColumnInfo(name = "AddtDesc")
     @NonNull
     public String addtDesc;
 
     @ColumnInfo(name = "AddtNbr")
-    public int addtNbr;
+    public String addtNbr;
 
-    public EnterPriceLoggingData(@NonNull String hostId,@NonNull String appID, @NonNull String userId, long locationNbr, int routeNbr, int day, @NonNull String logger, @NonNull String eventNbr, @NonNull String addtDesc, int addtNbr) {
+    public EnterPriceLoggingData(@NonNull String hostId,@NonNull String appID, @NonNull String userId, String locationNbr, int routeNbr, int day, @NonNull String logger, @NonNull int eventNbr, @NonNull String addtDesc, String addtNbr) {
         this.eventTime = new RoomDatabaseWrapper().getDeviceCurrentTime();
         this.hostId = hostId;
         this.appID = appID;
@@ -74,17 +74,9 @@ public class EnterPriceLoggingData {
         return Id;
     }
 
-    public void setId(int id) {
-        Id = id;
-    }
-
     @NonNull
     public String getEventTime() {
         return eventTime;
-    }
-
-    public void setEventTime(@NonNull String eventTime) {
-        this.eventTime = eventTime;
     }
 
     @NonNull
@@ -92,16 +84,8 @@ public class EnterPriceLoggingData {
         return hostId;
     }
 
-    public void setHostId(@NonNull String hostId) {
-        this.hostId = hostId;
-    }
-
     public String getAppID() {
         return appID;
-    }
-
-    public void setAppID(String appID) {
-        this.appID = appID;
     }
 
     @NonNull
@@ -109,32 +93,16 @@ public class EnterPriceLoggingData {
         return userId;
     }
 
-    public void setUserId(@NonNull String userId) {
-        this.userId = userId;
-    }
-
-    public long getLocationNbr() {
+    public String getLocationNbr() {
         return locationNbr;
-    }
-
-    public void setLocationNbr(long locationNbr) {
-        this.locationNbr = locationNbr;
     }
 
     public int getRouteNbr() {
         return routeNbr;
     }
 
-    public void setRouteNbr(int routeNbr) {
-        this.routeNbr = routeNbr;
-    }
-
     public int getDay() {
         return day;
-    }
-
-    public void setDay(int day) {
-        this.day = day;
     }
 
     @NonNull
@@ -142,17 +110,9 @@ public class EnterPriceLoggingData {
         return logger;
     }
 
-    public void setLogger(@NonNull String logger) {
-        this.logger = logger;
-    }
-
     @NonNull
-    public String getEventNbr() {
+    public int getEventNbr() {
         return eventNbr;
-    }
-
-    public void setEventNbr(@NonNull String eventNbr) {
-        this.eventNbr = eventNbr;
     }
 
     @NonNull
@@ -160,16 +120,8 @@ public class EnterPriceLoggingData {
         return addtDesc;
     }
 
-    public void setAddtDesc(@NonNull String addtDesc) {
-        this.addtDesc = addtDesc;
-    }
-
-    public int getAddtNbr() {
+    public String getAddtNbr() {
         return addtNbr;
-    }
-
-    public void setAddtNbr(int addtNbr) {
-        this.addtNbr = addtNbr;
     }
 
 

@@ -9,7 +9,7 @@ import java.util.Locale;
 
 public class RoomDatabaseWrapper {
 
-    public EnterPriceLoggingData createLogs(@NonNull String hostID,@NonNull String appID, @NonNull String userId, long locationNbr, int routeNbr, int day, @NonNull String logger, @NonNull String eventNbr, @NonNull String addtDesc, int addtNbr ) {
+    public EnterPriceLoggingData createLogs(@NonNull String hostID,@NonNull String appID, @NonNull String userId, String locationNbr, int routeNbr, int day, @NonNull String logger, @NonNull int eventNbr, @NonNull String addtDesc, String addtNbr ) {
         return new EnterPriceLoggingData(hostID,appID,userId,locationNbr,routeNbr,day,logger,eventNbr,addtDesc,addtNbr);
     }
 
