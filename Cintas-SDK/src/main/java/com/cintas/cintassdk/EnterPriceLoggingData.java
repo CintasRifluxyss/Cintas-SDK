@@ -56,9 +56,9 @@ public class EnterPriceLoggingData {
     @ColumnInfo(name = "AddtNbr")
     public int addtNbr;
 
-    public EnterPriceLoggingData(@NonNull String appID, @NonNull String userId, long locationNbr, int routeNbr, int day, @NonNull String logger, @NonNull String eventNbr, @NonNull String addtDesc, int addtNbr) {
+    public EnterPriceLoggingData(@NonNull String hostId,@NonNull String appID, @NonNull String userId, long locationNbr, int routeNbr, int day, @NonNull String logger, @NonNull String eventNbr, @NonNull String addtDesc, int addtNbr) {
         this.eventTime = new RoomDatabaseWrapper().getDeviceCurrentTime();
-        this.hostId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? Build.getSerial() : Build.SERIAL;
+        this.hostId = hostId;
         this.appID = appID;
         this.userId = userId;
         this.locationNbr = locationNbr;
