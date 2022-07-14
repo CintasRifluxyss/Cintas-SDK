@@ -1,17 +1,18 @@
 package com.cintas.cintassdk;
 
-import android.annotation.SuppressLint;
 import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.util.UUID;
 
-@Entity(tableName = "PRICE_DETAIL",primaryKeys = {"Id"})
+@Entity(tableName = "PRICE_DETAIL")
 public class EnterPriceLoggingData {
 
+    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "Id")
     public int Id;
 
@@ -57,7 +58,7 @@ public class EnterPriceLoggingData {
 
     public EnterPriceLoggingData(@NonNull String appID, @NonNull String userId, long locationNbr, int routeNbr, int day, @NonNull String logger, @NonNull String eventNbr, @NonNull String addtDesc, int addtNbr) {
         this.eventTime = new RoomDatabaseWrapper().getDeviceCurrentTime();
-        this.hostId = UUID.randomUUID().toString();
+        this.hostId = Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ? Build.getSerial() : Build.SERIAL;
         this.appID = appID;
         this.userId = userId;
         this.locationNbr = locationNbr;
